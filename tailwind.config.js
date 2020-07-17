@@ -3,16 +3,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        grey: "#565656",
-        mintgreen: "#b2ffa9",
-        orange: "#ff4a1c",
-        coffee: "#81523f",
-        burgundy: "#3f2a2b",
+        champagne: "#F5DBCB",
+        flame: "#EC4E20",
+        springbud: "#D6D5B3",
+        darkseagreen: "#7EB77F",
+        cadetgray: "#4F646F",
       },
       spacing: {
         "2/3": "66.666667%",
         "3/4": "75%",
         "5/6": "83.333333%",
+        "96": "24rem",
+        "112": "30rem",
       },
     },
   },

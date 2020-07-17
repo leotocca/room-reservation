@@ -18,11 +18,14 @@ const HotelCard = (props) => (
           <div className="flex ml-1 items-center">
             {Array(props.price).fill(
               <svg
-                className="h-4 w-4 fill-current text-teal-500"
+                className="h-4 w-4 fill-current text-darkseagreen"
                 xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
+                viewBox="0 0 24 24"
               >
-                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                <path
+                  class="heroicon-ui"
+                  d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm1-11v2h1a3 3 0 0 1 0 6h-1v1a1 1 0 0 1-2 0v-1H8a1 1 0 0 1 0-2h3v-2h-1a3 3 0 0 1 0-6h1V6a1 1 0 0 1 2 0v1h3a1 1 0 0 1 0 2h-3zm-2 0h-1a1 1 0 1 0 0 2h1V9zm2 6h1a1 1 0 0 0 0-2h-1v2z"
+                />
               </svg>
             )}
           </div>
@@ -39,7 +42,7 @@ const HotelCard = (props) => (
 
         <a
           href={props.url}
-          className="text-center py-2 w-full bg-teal-500 text-white uppercase tracking-wider mt-10 font-semibold hover:bg-teal-400"
+          className="text-center py-2 w-full bg-flame text-white uppercase tracking-wider mt-10 font-semibold hover:bg-cadetgray hover:text-champagne cursor-pointer"
         >
           Reservar
         </a>

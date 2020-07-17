@@ -2,6 +2,7 @@ import React from "react";
 import HotelCard from "./HotelCard";
 import Filters from "./Filters";
 import Header from "./Header";
+import Drawings from "./drawings/Drawings";
 import data from "../assets/scripts/data";
 import "../styles.css";
 
@@ -20,48 +21,59 @@ class App extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  render() {
-    let dataToShow = undefined;
+  filterData = () => {
     const { hotels, priceFilter, countryFilter } = this.state;
 
     if (priceFilter && countryFilter) {
-      dataToShow = hotels.filter(
+      return hotels.filter(
         (hotel) =>
           hotel.price === Number(priceFilter) && hotel.country === countryFilter
       );
     } else if (priceFilter) {
-      dataToShow = hotels.filter(
-        (hotel) => hotel.price === Number(priceFilter)
-      );
+      return hotels.filter((hotel) => hotel.price === Number(priceFilter));
     } else if (countryFilter) {
-      dataToShow = hotels.filter((hotel) => hotel.country === countryFilter);
+      return hotels.filter((hotel) => hotel.country === countryFilter);
     } else {
-      dataToShow = hotels;
+      return hotels;
     }
+  };
+
+  render() {
+    let dataToShow = this.filterData();
 
     return (
       <div className="w-full flex justify-center items-center flex-col bg-gray-100 antialiased text-gray-800">
         <Header />
-        <div className="w-full flex">
-          <div className="w-1/4">
-            <div className="sticky top-0">
-              <Filters handleFilters={this.handleFilters} />
-            </div>
+        <div className="w-full flex flex-col items-center" id="hotels">
+          <div className="w-full flex justify-center mt-10">
+            <h3 className="text-cadetgray border-b-2 border-darkseagreen w-5/12 text-center pb-4 text-4xl">
+              Amaze yourself with our resorts
+            </h3>
           </div>
-          <div className="w-full flex flex-wrap justify-center">
-            {dataToShow &&
-              dataToShow.map((hotel) => (
-                <HotelCard
-                  key={hotel.slug}
-                  photo={hotel.photo}
-                  name={hotel.name}
-                  description={hotel.description}
-                  rooms={hotel.rooms}
-                  city={hotel.city}
-                  country={hotel.country}
-                  price={hotel.price}
-                />
-              ))}
+          <div className="flex w-full mt-32">
+            <div className="w-1/4">
+              <div className="sticky top-0 -mr-16 ml-16 z-10">
+                <Filters handleFilters={this.handleFilters} />
+              </div>
+              <div className="flex flex-col items-center relative -mr-16 ml-16 mt-20">
+                <Drawings />
+              </div>
+            </div>
+            <div className="w-full flex flex-wrap justify-center">
+              {dataToShow &&
+                dataToShow.map((hotel) => (
+                  <HotelCard
+                    key={hotel.slug}
+                    photo={hotel.photo}
+                    name={hotel.name}
+                    description={hotel.description}
+                    rooms={hotel.rooms}
+                    city={hotel.city}
+                    country={hotel.country}
+                    price={hotel.price}
+                  />
+                ))}
+            </div>
           </div>
         </div>
 

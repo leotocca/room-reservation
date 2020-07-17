@@ -5,3 +5,6 @@
 @tailwind utilities;
 
 /* Custom css */
+html {
+  scroll-behavior: smooth;
+}
