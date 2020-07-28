@@ -13,27 +13,27 @@ const Drawings = () => (
       <BarbacueDraw />
     </div>
 
-    <div className="mt-112">
+    <div className="mt-128">
       <CabinDraw />
     </div>
 
-    <div className="mt-112">
+    <div className="mt-128">
       <DayOffDraw />
     </div>
 
-    <div className="mt-112">
+    <div className="mt-128">
       <MomentsDraw />
     </div>
 
-    <div className="mt-112">
+    <div className="mt-128">
       <TrueLoveDraw />
     </div>
 
-    <div className="mt-112">
+    <div className="mt-128">
       <SnowGamesDraw />
     </div>
 
-    <div className="mt-112">
+    <div className="mt-128">
       <CupOfTeaDraw />
     </div>
   </div>

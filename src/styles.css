@@ -8,3 +8,22 @@
 html {
   scroll-behavior: smooth;
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  @apply shadow-md;
+  @apply rounded-md;
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-cadetgray;
+  @apply rounded-md;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-800;
+}
