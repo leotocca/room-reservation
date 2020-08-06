@@ -8,4 +8,5 @@ It's a React app that lets you filter data updating the UI with the results.
 
 - Clone the repo to your local machine with "Git clone"
 - Install npm dependencies running the "npm install" command in your terminal
+- Run "npm run start" to build and start the app
 - Open up http://localhost:8080/ in your browser
