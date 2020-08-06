@@ -1,7 +1,7 @@
 import React from "react";
 
 const HotelCard = (props) => (
-  <div className="w-3/4 md:w-1/3 mx-10 my-8">
+  <div className="w-5/6 md:w-1/3 lg:mx-10 mt-12 lg:my-8">
     <div className="relative rounded-sm overflow-hidden pb-3/4 shadow">
       <img
         className="h-full w-full absolute top-0 object-cover object-center"
@@ -9,7 +9,7 @@ const HotelCard = (props) => (
         alt={props.name}
       />
     </div>
-    <div className="px-8 -mt-10 relative">
+    <div className="px-2 lg:px-8 -mt-10 relative">
       <div className="p-6 rounded-md bg-white shadow-md h-auto flex flex-col items-start justify-center">
         <div className="flex">
           <p className="text-sm font-semibold uppercase text-gray-600 tracking-wide">

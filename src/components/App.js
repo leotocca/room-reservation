@@ -2,7 +2,7 @@ import React from "react";
 import HotelCard from "./HotelCard";
 import Filters from "./Filters";
 import Header from "./Header";
-import Drawings from "./drawings/Drawings";
+// import Drawings from "./drawings/Drawings";
 import data from "../assets/scripts/data";
 import "../styles.css";
 
@@ -46,21 +46,20 @@ class App extends React.Component {
   };
 
   render() {
-    let dataToShow = this.filterData();
-    console.log("Datatoshow:", dataToShow);
+    const dataToShow = this.filterData();
 
     return (
-      <div className="w-full flex justify-center items-center flex-col bg-gray-100 antialiased text-gray-800">
+      <div className="w-screen flex justify-center items-center flex-col bg-gray-100 antialiased text-gray-800 overflow-x-hidden">
         <Header />
         <div className="w-full flex flex-col items-center" id="hotels">
-          <div className="w-full flex justify-center mt-10">
+          <div className="w-full hidden lg:flex justify-center mt-10">
             <h3 className="text-cadetgray border-b-2 border-darkseagreen w-5/12 text-center pb-4 text-4xl">
               Amaze yourself with our resorts
             </h3>
           </div>
-          <div className="flex w-full mt-24">
-            <div className="w-1/4">
-              <div className="sticky top-0 -mr-16 ml-16 z-10">
+          <div className="flex w-full flex-col items-center lg:items-start lg:flex-row lg:mt-24">
+            <div className="filters w-11/12 lg:w-1/4 lg:sticky ">
+              <div className="z-10">
                 <Filters
                   handleFilters={this.handleFilters}
                   setDates={this.setDates}
@@ -69,8 +68,9 @@ class App extends React.Component {
                 />
               </div>
             </div>
+
             <div className="w-full flex flex-wrap justify-center">
-              {dataToShow ? (
+              {dataToShow && dataToShow.length !== 0 ? (
                 dataToShow.map((hotel) => (
                   <HotelCard
                     key={hotel.slug}
@@ -84,8 +84,10 @@ class App extends React.Component {
                   />
                 ))
               ) : (
-                <div>
-                  <h1>No hotels match your search! Please, try another one!</h1>
+                <div className="mt-10 bg-flame text-white shadow-md rounded-md h-16 flex justify-center items-center px-10">
+                  <h1 className="text-lg font-semibold">
+                    No hotels match your search. Please, try another one.
+                  </h1>
                 </div>
               )}
             </div>
