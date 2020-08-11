@@ -3,9 +3,9 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const Filters = (props) => (
-  <div className="flex w-full flex-col justify-center">
-    <form className="bg-cadetgray rounded-md shadow-lg flex flex-col justify-center items-center px-5 lg:px-8 pb-10 lg:pb-16 pt-5 lg:pt-10 -mt-12 mb-12 lg:mt-10 w-5/6 lg:w-full z-10">
-      <div className="flex flex-col items-start justify-center w-full ">
+  <div className="w-full">
+    <form className="bg-cadetgray rounded-md shadow-lg flex justify-center items-center px-5 py-10">
+      <div className="flex flex-col items-start justify-center w-1/4 mx-2">
         <label className="text-white font-semibold">Choose a country</label>
         <select
           className="w-full mt-2 py-1 px-2 border-none "
@@ -45,10 +45,10 @@ const Filters = (props) => (
         </select>
       </div>
 
-      <div className="flex flex-col items-start justify-center w-full mt-10">
+      <div className="flex flex-col items-start justify-center w-1/4 mx-2">
         <label className="text-white font-semibold">Choose a price</label>
         <select
-          className="w-full mt-2 mb-12 py-1 px-2 border-none "
+          className="w-full mt-2 py-1 px-2 border-none "
           name="priceFilter"
           onChange={props.handleFilters}
         >
@@ -62,7 +62,30 @@ const Filters = (props) => (
           <option value="4">4</option>
         </select>
       </div>
-      <DatePicker
+      <div className="flex flex-col justify-center mx-2 w-1/4">
+        <p className="mb-2 text-white font-semibold">Start date</p>
+        <DatePicker
+          selected={props.startDate}
+          onChange={props.setStartDate}
+          selectsStart
+          startDate={props.startDate}
+          endDate={props.endDate}
+        />
+      </div>
+
+      <div className="flex flex-col justify-center mx-2 w-1/4">
+        <p className="mb-2 text-white font-semibold">End date</p>
+        <DatePicker
+          selected={props.endDate}
+          onChange={props.setEndDate}
+          selectsEnd
+          startDate={props.startDate}
+          endDate={props.endDate}
+          minDate={props.startDate}
+        />
+      </div>
+
+      {/*<DatePicker
         onChange={props.setDates}
         showPopperArrow={false}
         closeOnScroll={true}
@@ -72,7 +95,7 @@ const Filters = (props) => (
         selectsRange
         inline
         className="mt-10 w-full"
-      />
+      />*/}
     </form>
   </div>
 );

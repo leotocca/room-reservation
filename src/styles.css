@@ -27,10 +27,3 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-gray-800;
 }
-
-@media (min-width: 1024px) {
-  .filters {
-    left: 40px;
-    top: 20px;
-  }
-}

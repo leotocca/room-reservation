@@ -11,8 +11,8 @@ class App extends React.Component {
     hotels: undefined,
     priceFilter: undefined,
     countryFilter: undefined,
-    startDate: undefined,
-    endDate: undefined,
+    startDate: new Date("2014/02/10"),
+    endDate: new Date("2014/02/20"),
   };
 
   componentDidMount() {
@@ -23,15 +23,43 @@ class App extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  setDates = (dates) => {
-    const [start, end] = dates;
-    this.setState({ startDate: start, endDate: end });
+  setStartDate = (date) => {
+    const [start] = date;
+    this.setState({ startDate: start });
+  };
+
+  setEndDate = (date) => {
+    const [end] = date;
+    this.setState({ endDate: end });
   };
 
   filterData = () => {
-    const { hotels, priceFilter, countryFilter } = this.state;
+    const {
+      hotels,
+      priceFilter,
+      countryFilter,
+      startDate,
+      endDate,
+    } = this.state;
 
-    if (priceFilter && countryFilter) {
+    if (priceFilter && countryFilter && startDate) {
+      return hotels.filter((hotel) => {
+        if (!endDate) {
+          return (
+            hotel.price === Number(priceFilter) &&
+            hotel.country === countryFilter &&
+            hotel.availabilityFrom <= new Date(startDate).valueOf()
+          );
+        } else {
+          return (
+            hotel.price === Number(priceFilter) &&
+            hotel.country === countryFilter &&
+            hotel.availabilityFrom <= new Date(startDate).valueOf() &&
+            hotel.availabilityTo >= new Date(endDate).valueOf()
+          );
+        }
+      });
+    } else if (priceFilter && countryFilter) {
       return hotels.filter(
         (hotel) =>
           hotel.price === Number(priceFilter) && hotel.country === countryFilter
@@ -49,26 +77,22 @@ class App extends React.Component {
     const dataToShow = this.filterData();
 
     return (
-      <div className="w-screen flex justify-center items-center flex-col bg-gray-100 antialiased text-gray-800 overflow-x-hidden">
+      <div className="overflow-hidden flex justify-center items-center flex-col bg-gray-100 antialiased text-gray-800">
         <Header />
         <div className="w-full flex flex-col items-center" id="hotels">
-          <div className="w-full hidden lg:flex justify-center mt-10">
-            <h3 className="text-cadetgray border-b-2 border-darkseagreen w-5/12 text-center pb-4 text-4xl">
-              Amaze yourself with our resorts
-            </h3>
+          <h3 className="text-cadetgray border-b-2 border-darkseagreen w-5/12 text-center pb-4 text-4xl mt-20 mb-16">
+            Amaze yourself with our resorts
+          </h3>
+          <div className="w-11/12 lg:w-2/3">
+            <Filters
+              handleFilters={this.handleFilters}
+              setStartDate={this.setStartDate}
+              setEndDate={this.setEndDate}
+              startDate={this.state.startDate}
+              endDate={this.state.endDate}
+            />
           </div>
           <div className="flex w-full flex-col items-center lg:items-start lg:flex-row lg:mt-24">
-            <div className="filters w-11/12 lg:w-1/4 lg:sticky ">
-              <div className="z-10">
-                <Filters
-                  handleFilters={this.handleFilters}
-                  setDates={this.setDates}
-                  startDate={this.state.startDate}
-                  endDate={this.state.endDate}
-                />
-              </div>
-            </div>
-
             <div className="w-full flex flex-wrap justify-center">
               {dataToShow && dataToShow.length !== 0 ? (
                 dataToShow.map((hotel) => (

@@ -7,7 +7,7 @@ const Header = () => (
     style={{
       backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)), url(${backgroundImg})`,
     }}
-    className="w-full relative h-screen bg-red-200 flex items-center justify-center flex-col lg:mb-20 shadow-md bg-scroll bg-right lg:bg-center bg-no-repeat bg-cover"
+    className="w-full relative h-screen bg-red-200 flex items-center justify-center flex-col shadow-md bg-scroll bg-right lg:bg-center bg-no-repeat bg-cover"
   >
     <div className="flex justify-center items-center flex-col w-full">
       <div className="w-full absolute top-0 left-0">
