@@ -2,7 +2,6 @@ import React from "react";
 import HotelCard from "./HotelCard";
 import Filters from "./Filters";
 import Header from "./Header";
-// import Drawings from "./drawings/Drawings";
 import data from "../assets/scripts/data";
 import "../styles.css";
 
@@ -10,6 +9,7 @@ class App extends React.Component {
   state = {
     hotels: undefined,
     priceFilter: undefined,
+    sizeFilter: undefined,
     countryFilter: undefined,
     startDate: undefined,
     endDate: undefined,
@@ -19,14 +19,22 @@ class App extends React.Component {
     this.setState({ hotels: data });
   }
 
+  handleSizeFilter = (event) => {
+    this.setState({
+      sizeFilter: event.value !== "allSizes" ? event.value : undefined,
+    });
+  };
+
   handleCountryFilter = (event) => {
-    console.log(event);
-    this.setState({ countryFilter: event.value });
+    this.setState({
+      countryFilter: event.value !== "allCountries" ? event.value : undefined,
+    });
   };
 
   handlePriceFilter = (event) => {
-    console.log(event);
-    this.setState({ priceFilter: event.value });
+    this.setState({
+      priceFilter: event.value !== "allPrices" ? event.value : undefined,
+    });
   };
 
   setStartDate = (date) => {
@@ -47,6 +55,18 @@ class App extends React.Component {
     );
   };
 
+  filterBySize = (hotels) => {
+    const { sizeFilter } = this.state;
+
+    if (sizeFilter === "small") {
+      return hotels.filter((hotel) => hotel.rooms < 10);
+    } else if (sizeFilter === "medium") {
+      return hotels.filter((hotel) => hotel.rooms >= 10 && hotel.rooms <= 20);
+    } else {
+      return hotels.filter((hotel) => hotel.rooms > 20);
+    }
+  };
+
   filterByPrice = (hotels) => {
     const { priceFilter } = this.state;
     return hotels.filter((hotel) => hotel.price === Number(priceFilter));
@@ -62,27 +82,31 @@ class App extends React.Component {
       hotels,
       priceFilter,
       countryFilter,
+      sizeFilter,
       startDate,
-      endDate,
     } = this.state;
 
-    let hotelsToShow = [];
+    if (hotels) {
+      let hotelsToShow = [...hotels];
 
-    if (priceFilter && countryFilter && startDate) {
-      hotelsToShow = this.filterByPrice(
-        this.filterByDate(this.filterByCountry(hotels))
-      );
+      if (sizeFilter) {
+        hotelsToShow = this.filterBySize(hotelsToShow);
+      }
+
+      if (priceFilter) {
+        hotelsToShow = this.filterByPrice(hotelsToShow);
+      }
+
+      if (countryFilter) {
+        hotelsToShow = this.filterByCountry(hotelsToShow);
+      }
+
+      if (startDate) {
+        hotelsToShow = this.filterByDate(hotelsToShow);
+      }
+
+      return hotelsToShow;
     }
-
-    if (countryFilter && priceFilter) {
-      hotelsToShow = this.filterByCountry(this.filterByPrice(hotels));
-    }
-
-    if (priceFilter) {
-      hotelsToShow = this.filterByPrice(hotels);
-    }
-
-    return hotels;
   };
 
   render() {
@@ -95,8 +119,9 @@ class App extends React.Component {
           <h3 className="text-cadetgray border-b-2 border-darkseagreen w-5/12 text-center pb-4 text-4xl mt-20 mb-16">
             Amaze yourself with our resorts
           </h3>
-          <div className="w-11/12 lg:w-2/3">
+          <div className="w-11/12 lg:w-3/4">
             <Filters
+              handleSizeFilter={this.handleSizeFilter}
               handleCountryFilter={this.handleCountryFilter}
               handlePriceFilter={this.handlePriceFilter}
               setStartDate={this.setStartDate}
@@ -130,14 +155,11 @@ class App extends React.Component {
             </div>
           </div>
         </div>
-        <div className="w-full h-24 bg-gray-200 flex justify-center items-center flex-col sticky top-0 z-20"></div>
+        <div className="w-full h-24 mt-32 bg-gray-200 flex justify-center items-center flex-col sticky top-0 z-20"></div>
         <div className="w-full md:w-5/6 flex justify-center items-center"></div>
       </div>
     );
   }
-  // <div className="flex flex-col items-center relative -mr-16 ml-16 mt-20">
-  //   <Drawings />
-  // </div>
 }
 
 export default App;
