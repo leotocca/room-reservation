@@ -11,26 +11,50 @@ class App extends React.Component {
     hotels: undefined,
     priceFilter: undefined,
     countryFilter: undefined,
-    startDate: new Date("2014/02/10"),
-    endDate: new Date("2014/02/20"),
+    startDate: undefined,
+    endDate: undefined,
   };
 
   componentDidMount() {
     this.setState({ hotels: data });
   }
 
-  handleFilters = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
+  handleCountryFilter = (event) => {
+    console.log(event);
+    this.setState({ countryFilter: event.value });
+  };
+
+  handlePriceFilter = (event) => {
+    console.log(event);
+    this.setState({ priceFilter: event.value });
   };
 
   setStartDate = (date) => {
-    const [start] = date;
-    this.setState({ startDate: start });
+    this.setState({ startDate: date });
   };
 
   setEndDate = (date) => {
-    const [end] = date;
-    this.setState({ endDate: end });
+    this.setState({ endDate: date });
+  };
+
+  filterByDate = (hotels) => {
+    const { startDate, endDate } = this.state;
+
+    return hotels.filter(
+      (hotel) =>
+        hotel.availabilityFrom <= new Date(startDate).valueOf() &&
+        hotel.availabilityTo >= new Date(endDate).valueOf()
+    );
+  };
+
+  filterByPrice = (hotels) => {
+    const { priceFilter } = this.state;
+    return hotels.filter((hotel) => hotel.price === Number(priceFilter));
+  };
+
+  filterByCountry = (hotels) => {
+    const { countryFilter } = this.state;
+    return hotels.filter((hotel) => hotel.country === countryFilter);
   };
 
   filterData = () => {
@@ -42,35 +66,23 @@ class App extends React.Component {
       endDate,
     } = this.state;
 
+    let hotelsToShow = [];
+
     if (priceFilter && countryFilter && startDate) {
-      return hotels.filter((hotel) => {
-        if (!endDate) {
-          return (
-            hotel.price === Number(priceFilter) &&
-            hotel.country === countryFilter &&
-            hotel.availabilityFrom <= new Date(startDate).valueOf()
-          );
-        } else {
-          return (
-            hotel.price === Number(priceFilter) &&
-            hotel.country === countryFilter &&
-            hotel.availabilityFrom <= new Date(startDate).valueOf() &&
-            hotel.availabilityTo >= new Date(endDate).valueOf()
-          );
-        }
-      });
-    } else if (priceFilter && countryFilter) {
-      return hotels.filter(
-        (hotel) =>
-          hotel.price === Number(priceFilter) && hotel.country === countryFilter
+      hotelsToShow = this.filterByPrice(
+        this.filterByDate(this.filterByCountry(hotels))
       );
-    } else if (priceFilter) {
-      return hotels.filter((hotel) => hotel.price === Number(priceFilter));
-    } else if (countryFilter) {
-      return hotels.filter((hotel) => hotel.country === countryFilter);
-    } else {
-      return hotels;
     }
+
+    if (countryFilter && priceFilter) {
+      hotelsToShow = this.filterByCountry(this.filterByPrice(hotels));
+    }
+
+    if (priceFilter) {
+      hotelsToShow = this.filterByPrice(hotels);
+    }
+
+    return hotels;
   };
 
   render() {
@@ -85,7 +97,8 @@ class App extends React.Component {
           </h3>
           <div className="w-11/12 lg:w-2/3">
             <Filters
-              handleFilters={this.handleFilters}
+              handleCountryFilter={this.handleCountryFilter}
+              handlePriceFilter={this.handlePriceFilter}
               setStartDate={this.setStartDate}
               setEndDate={this.setEndDate}
               startDate={this.state.startDate}
