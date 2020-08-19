@@ -15,3 +15,6 @@ It's a React app that mimics a hotel reservation app. It can handle different da
 
 - [React Datepicker](https://reactdatepicker.com/)
 - [React Select](https://react-select.com/home)
+- [Tailwindcss](https://tailwindcss.com/)
+- [Postcss](https://postcss.org/)
+
