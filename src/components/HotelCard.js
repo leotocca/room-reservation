@@ -14,7 +14,7 @@ const svg = (
 );
 
 const HotelCard = (props) => (
-  <div className="w-5/6 md:w-1/3 lg:mx-10 mt-12 lg:my-8">
+  <div className="w-5/6 md:w-1/3 md:mx-5 lg:mx-10 mt-12 lg:my-8">
     <div className="relative rounded-sm overflow-hidden pb-3/4 shadow">
       <img
         className="h-full w-full absolute top-0 object-cover object-center"
