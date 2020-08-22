@@ -155,8 +155,22 @@ class App extends React.Component {
             </div>
           </div>
         </div>
-        <div className="w-full h-24 mt-32 bg-gray-200 flex justify-center items-center flex-col sticky top-0 z-20"></div>
-        <div className="w-full md:w-5/6 flex justify-center items-center"></div>
+        <div className="w-full mt-32 bg-gray-200 flex justify-center items-center flex-col sticky top-0 z-20">
+          <p className="my-2">
+            Made with love by{" "}
+            <a className="font-bold" href="https://leotocca.com/">
+              Leo Toccaceli
+            </a>{" "}
+            with React - Check it out in{" "}
+            <a
+              className="font-bold"
+              href="https://github.com/leotocca/room-reservation"
+            >
+              Github
+            </a>
+            !
+          </p>
+        </div>
       </div>
     );
   }

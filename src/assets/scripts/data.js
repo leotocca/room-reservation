@@ -16,7 +16,7 @@ const hotelsData = [
     city: "Buenos Aires",
     country: "Argentina",
     price: 4,
-    url: "www.labambadeareco.com/?lang=es",
+    url: "https://www.labambadeareco.com/?lang=es",
   },
   {
     slug: "sainte-jeanne",
@@ -30,7 +30,7 @@ const hotelsData = [
     city: "Mar del Plata",
     country: "Argentina",
     price: 2,
-    url: "hotelsaintejeanne.com/es/",
+    url: "https://hotelsaintejeanne.com/es/",
   },
   {
     slug: "entre-cielos",
@@ -44,7 +44,7 @@ const hotelsData = [
     city: "Mendoza",
     country: "Argentina",
     price: 4,
-    url: "www.entrecielos.com/es",
+    url: "https://www.entrecielos.com/es",
   },
   {
     slug: "huacalera",
@@ -58,7 +58,7 @@ const hotelsData = [
     city: "Jujuy",
     country: "Argentina",
     price: 1,
-    url: "www.hotelhuacalera.com/",
+    url: "https://www.hotelhuacalera.com/",
   },
   {
     slug: "merced-del-alto",
@@ -72,7 +72,7 @@ const hotelsData = [
     city: "Salta",
     country: "Argentina",
     price: 2,
-    url: "www.lamerceddelalto.com/",
+    url: "https://www.lamerceddelalto.com/",
   },
   {
     slug: "azur-real",
@@ -86,7 +86,7 @@ const hotelsData = [
     city: "Córdoba",
     country: "Argentina",
     price: 1,
-    url: "www.azurrealhotel.com/",
+    url: "https://www.azurrealhotel.com/",
   },
   {
     slug: "rincon-del-socorro",
@@ -100,7 +100,7 @@ const hotelsData = [
     city: "Corrientes",
     country: "Argentina",
     price: 2,
-    url: "rincondelsocorro.com.ar/",
+    url: "https://rincondelsocorro.com.ar/",
   },
   {
     slug: "luma-casa-de-montana",
@@ -114,7 +114,7 @@ const hotelsData = [
     city: "Villa La Angostura",
     country: "Argentina",
     price: 2,
-    url: "www.lumapatagonia.com.ar/es/",
+    url: "https://www.lumapatagonia.com.ar/es/",
   },
   {
     slug: "casa-turquesa",
@@ -128,7 +128,7 @@ const hotelsData = [
     city: "Río de Janeiro",
     country: "Brasil",
     price: 3,
-    url: "www.casaturquesa.com.br/",
+    url: "https://www.casaturquesa.com.br/",
   },
   {
     slug: "vila-da-santa",
@@ -142,7 +142,7 @@ const hotelsData = [
     city: "Buzios",
     country: "Brasil",
     price: 3,
-    url: "www.viladasanta.com/es",
+    url: "https://www.viladasanta.com/es",
   },
   {
     slug: "uxua-casa",
@@ -156,7 +156,7 @@ const hotelsData = [
     city: "Bahía",
     country: "Brasil",
     price: 4,
-    url: "uxua.com/",
+    url: "https://uxua.com/",
   },
   {
     slug: "ponta-dos-ganchos",
@@ -170,7 +170,7 @@ const hotelsData = [
     city: "Santa Catarina",
     country: "Brasil",
     price: 4,
-    url: "www.pontadosganchos.com.br/",
+    url: "https://www.pontadosganchos.com.br/",
   },
   {
     slug: "alto-atacama",
@@ -184,7 +184,7 @@ const hotelsData = [
     city: "San Pedro de Atacama",
     country: "Chile",
     price: 4,
-    url: "www.altoatacama.com/",
+    url: "https://www.altoatacama.com/",
   },
   {
     slug: "tierra-patagonia",
@@ -198,7 +198,7 @@ const hotelsData = [
     city: "Torres del Paine",
     country: "Chile",
     price: 4,
-    url: "tierrahotels.com/patagonia/es/",
+    url: "https://tierrahotels.com/patagonia/es/",
   },
   {
     slug: "vira-vira",
@@ -213,7 +213,7 @@ const hotelsData = [
     country: "Chile",
     price: 4,
     url:
-      "www.relaischateaux.com/es/chile/hacienda-hotel-vira-vira-araucania-pucon",
+      "https://www.relaischateaux.com/es/chile/hacienda-hotel-vira-vira-araucania-pucon",
   },
   {
     slug: "vik-chile",
@@ -227,7 +227,7 @@ const hotelsData = [
     city: "Millahue",
     country: "Chile",
     price: 4,
-    url: "vikchile.com/esp/",
+    url: "https://vikchile.com/esp/",
   },
   {
     slug: "casa-higueras",
@@ -241,7 +241,7 @@ const hotelsData = [
     city: "Valparaíso",
     country: "Chile",
     price: 4,
-    url: "casahigueras.cl/esp/",
+    url: "https://casahigueras.cl/esp/",
   },
   {
     slug: "campo-tinto",
@@ -255,7 +255,7 @@ const hotelsData = [
     city: "Colonia",
     country: "Uruguay",
     price: 1,
-    url: "posadacampotinto.com/",
+    url: "https://posadacampotinto.com/",
   },
 ];
 
