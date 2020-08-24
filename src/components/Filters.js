@@ -32,7 +32,7 @@ const Filters = (props) => (
     <form className="bg-cadetgray rounded-md shadow-lg flex flex-col justify-start items-center px-5 pt-8 pb-8">
       <div className="w-full flex flex-col lg:flex-row justify-center items-center">
         <div className="flex flex-col items-start justify-center w-full my-3 lg:my-0 lg:w-1/4 mx-2">
-          <p className="mb-2 text-white font-semibold">Select a size</p>
+          <p className="mb-2 text-white font-semibold">Choose a size</p>
           <Select
             placeholderText="Select a size"
             options={sizeOptions}
@@ -41,7 +41,7 @@ const Filters = (props) => (
           />
         </div>
         <div className="flex flex-col items-start justify-center w-full my-3 lg:my-0 lg:w-1/4 mx-2">
-          <p className="mb-2 text-white font-semibold">Select a price</p>
+          <p className="mb-2 text-white font-semibold">Choose a price</p>
           <Select
             placeholderText="Select a price range"
             options={priceOptions}
@@ -52,7 +52,7 @@ const Filters = (props) => (
         </div>
 
         <div className="flex flex-col items-start justify-center w-full my-3 lg:my-0 lg:w-1/4 mx-2">
-          <p className="mb-2 text-white font-semibold">Select a country</p>
+          <p className="mb-2 text-white font-semibold">Choose a country</p>
           <Select
             placeholderText="Select a destination"
             options={countryOptions}
@@ -62,7 +62,7 @@ const Filters = (props) => (
           />
         </div>
         <div className="flex flex-col justify-center mx-2 w-full my-3 lg:my-0 lg:w-1/4">
-          <p className="mb-2 text-white font-semibold">Start date</p>
+          <p className="mb-2 text-white font-semibold">Choose start date</p>
           <DatePicker
             selected={props.startDate}
             onChange={props.setStartDate}
@@ -76,7 +76,7 @@ const Filters = (props) => (
         </div>
 
         <div className="flex flex-col justify-center mx-2 w-full my-3 lg:my-0 lg:w-1/4">
-          <p className="mb-2 text-white font-semibold">End date</p>
+          <p className="mb-2 text-white font-semibold">Choose end date</p>
           <DatePicker
             selected={props.endDate}
             onChange={props.setEndDate}

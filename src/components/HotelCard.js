@@ -46,7 +46,7 @@ const HotelCard = (props) => (
           href={props.url}
           className="text-center py-2 w-full bg-flame text-white uppercase tracking-wider mt-10 font-semibold hover:bg-cadetgray hover:text-champagne cursor-pointer"
         >
-          Reservar
+          MAKE A RESERVATION
         </a>
       </div>
     </div>
